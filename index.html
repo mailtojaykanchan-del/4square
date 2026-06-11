@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FourSquare Live</title>
+    <link rel="stylesheet" href="/styles.css?v=9">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Online playground court</p>
+          <h1>FourSquare Live</h1>
+        </div>
+        <div class="room-strip" id="roomStrip" hidden>
+          <span class="room-label">Room</span>
+          <button class="room-code" id="copyRoomButton" type="button" title="Copy room link"></button>
+          <span class="connection-dot" id="connectionDot" aria-label="Connection status"></span>
+        </div>
+      </header>
+
+      <main class="layout">
+        <section class="court-wrap" aria-label="Four Square court">
+          <canvas id="courtCanvas"></canvas>
+          <div class="court-status" id="courtStatus"></div>
+        </section>
+
+        <aside class="panel control-panel">
+          <div id="joinPanel" class="join-panel">
+            <label>
+              <span>Name</span>
+              <input id="playerName" maxlength="18" autocomplete="name" placeholder="Player">
+            </label>
+            <label>
+              <span>Color</span>
+              <input id="playerColor" type="color" value="#287c91" aria-label="Player color">
+            </label>
+            <div class="join-row">
+              <button id="createRoomButton" class="primary" type="button">Create Room</button>
+              <label class="room-input">
+                <span>Code</span>
+                <input id="roomCodeInput" maxlength="4" placeholder="ABCD">
+              </label>
+              <button id="joinRoomButton" type="button">Join</button>
+            </div>
+          </div>
+
+          <div id="gamePanel" class="game-panel" hidden>
+            <div class="mini-stack">
+              <p class="panel-kicker">Your square</p>
+              <h2 id="yourSquare">Line</h2>
+            </div>
+
+            <div class="seat-grid" id="seatGrid"></div>
+
+            <div class="toolbar">
+              <button id="readyButton" type="button">Ready</button>
+              <button id="startButton" class="primary" type="button">Start</button>
+              <button id="botsButton" type="button">Fill</button>
+              <button id="leaveSeatButton" type="button">Line</button>
+              <button id="leaveRoomButton" class="danger" type="button">Leave</button>
+            </div>
+
+            <div class="difficulty-control" id="difficultyControl" role="group" aria-label="Bot difficulty">
+              <button class="difficulty-button" type="button" data-difficulty="easy">Easy</button>
+              <button class="difficulty-button active" type="button" data-difficulty="medium">Medium</button>
+              <button class="difficulty-button" type="button" data-difficulty="hard">Hard</button>
+            </div>
+
+            <div class="hit-panel" id="hitPanel" hidden>
+              <p class="panel-kicker">Aim</p>
+              <div class="style-control" role="group" aria-label="Hit style">
+                <button class="style-button active" type="button" data-style="drive">Drive</button>
+                <button class="style-button" type="button" data-style="lob">Lob</button>
+                <button class="style-button" type="button" data-style="drop">Drop</button>
+              </div>
+              <div class="target-grid" id="targetGrid"></div>
+              <button id="hitButton" class="primary" type="button">Hit</button>
+              <button id="faultButton" class="danger" type="button">Call Out</button>
+            </div>
+          </div>
+        </aside>
+
+        <section class="side-stack">
+          <div class="panel">
+            <div class="panel-heading">
+              <h2>Players</h2>
+              <span id="playerCount">0</span>
+            </div>
+            <div class="players-list" id="playersList"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-heading">
+              <h2>Rally</h2>
+              <span id="roundCount">Lobby</span>
+            </div>
+            <div class="feed" id="feed"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script src="/app.js?v=9" defer></script>
+  </body>
+</html>
